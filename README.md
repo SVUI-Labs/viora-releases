@@ -5,7 +5,8 @@ Download them from the [Releases](../../releases) page and verify with `SHA256SU
 
 ## Install / update with Obtainium
 
-1. Add `https://github.com/SVUI-Labs/viora-releases` as a source in [Obtainium](https://obtainium.imranr.dev/).
+1. On your phone, tap [**Add to Obtainium**](obtainium://add/https://github.com/SVUI-Labs/viora-releases), or in [Obtainium](https://obtainium.imranr.dev/) choose *Add App* and paste:
+   `https://github.com/SVUI-Labs/viora-releases`
 2. Each release has more than one APK, so set **Filter APKs by regex**:
    - Standard: `^(?!.*[Ee]nterprise).*\.apk$`
    - Enterprise: `enterprise`
