@@ -4,17 +4,44 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Add Viora to Obtainium</title>
-<meta http-equiv="refresh" content="0; url=obtainium://add/https://github.com/SVUI-Labs/viora-releases">
 <style>
   body { font-family: system-ui, sans-serif; max-width: 32rem; margin: 3rem auto; padding: 0 1rem; line-height: 1.5; }
   code { word-break: break-all; }
+  #fallback { display: none; }
 </style>
 </head>
 <body>
 <h1>Opening Obtainium…</h1>
-<p>If nothing happens, <a href="obtainium://add/https://github.com/SVUI-Labs/viora-releases">tap here</a>.</p>
-<p>No Obtainium? <a href="https://obtainium.imranr.dev/">Get it here</a>, then add this source manually:</p>
-<p><code>https://github.com/SVUI-Labs/viora-releases</code></p>
-<script>location.href = "obtainium://add/https://github.com/SVUI-Labs/viora-releases";</script>
+<p>If nothing happens, <a id="link" href="#">tap here</a>.</p>
+<div id="fallback">
+  <p>Obtainium doesn't seem to be installed. <a href="https://obtainium.imranr.dev/">Get Obtainium</a>,
+  then come back and tap the badge again, or add this source manually:</p>
+  <p><code>https://github.com/SVUI-Labs/viora-releases</code></p>
+</div>
+<script>
+  // ?edition=enterprise selects the enterprise app; default is the standard app.
+  var enterprise = new URLSearchParams(location.search).get("edition") === "enterprise";
+  var app = {
+    id: enterprise ? "org.svui.viora.enterprise" : "org.svui.viora",
+    url: "https://github.com/SVUI-Labs/viora-releases",
+    author: "SVUI-Labs",
+    name: enterprise ? "Viora Enterprise" : "Viora",
+    // Each release holds both APKs; pick the right one.
+    additionalSettings: JSON.stringify({
+      apkFilterRegEx: enterprise ? "enterprise" : "^(?!.*[Ee]nterprise).*\.apk$"
+    })
+  };
+  var deep = "obtainium://app/" + encodeURIComponent(JSON.stringify(app));
+  document.getElementById("link").href = deep;
+  // If the app took over, the page is hidden; otherwise show the fallback after a moment.
+  var timer = setTimeout(function () {
+    document.getElementById("fallback").style.display = "block";
+  }, 2500);
+  document.addEventListener("visibilitychange", function () {
+    if (document.hidden) clearTimeout(timer);
+  });
+  location.href = deep;
+</script>
+<noscript><p>Enable JavaScript, or add <code>https://github.com/SVUI-Labs/viora-releases</code> in Obtainium manually.</p></noscript>
 </body>
 </html>

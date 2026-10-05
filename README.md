@@ -6,7 +6,7 @@ Download them from the [Releases](../../releases) page and verify with `SHA256SU
 ## Install / Update with Obtainium
 
 ### Option 1: Press on the button to auto-add to Obtainium.
-[<img src="assets/badge_obtainium.png" alt="Get it on Obtainium" width="200">](https://svui-labs.github.io/viora-releases/)
+[<img src="assets/badge_obtainium.png" alt="Get it on Obtainium" height="48">](https://svui-labs.github.io/viora-releases/)
 
 ### Option 2: Add the source manually.
 1. On your phone, tap the badge above, or in [Obtainium](https://obtainium.imranr.dev/) choose *Add App* and paste:
